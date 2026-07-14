@@ -406,8 +406,7 @@ function showTab(name){
 const CHECK_KEYS = ['pill','water','workout','food','steps'];
 
 function toggleCheck(key){
-  // allow editing past days
-  const dk=todayKey(); const c=getChecks(dk); c[key]=!c[key]; saveChecks(dk,c);
+  const dk=todayKey(currentOffset); const c=getChecks(dk); c[key]=!c[key]; saveChecks(dk,c);
   renderChecks(); renderWeekStats();
 }
 
