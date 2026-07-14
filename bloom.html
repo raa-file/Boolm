@@ -406,7 +406,7 @@ function showTab(name){
 const CHECK_KEYS = ['pill','water','workout','food','steps'];
 
 function toggleCheck(key){
-  if(currentOffset!==0){ showToast('يمكنك التعديل على اليوم الحالي فقط'); return; }
+  // allow editing past days
   const dk=todayKey(); const c=getChecks(dk); c[key]=!c[key]; saveChecks(dk,c);
   renderChecks(); renderWeekStats();
 }
