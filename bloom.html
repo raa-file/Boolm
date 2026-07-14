@@ -376,7 +376,13 @@ let selectedMeal = 'breakfast';
 let selectedWorkoutDay = 0;
 
 // ===== HELPERS =====
-function todayKey(o=0){ const d=new Date(); d.setDate(d.getDate()+o); return d.toISOString().slice(0,10); }
+function todayKey(o=0){
+  const d=new Date();
+  // Day starts at 5am: before 5am counts as previous day
+  d.setHours(d.getHours()-5);
+  d.setDate(d.getDate()+o);
+  return d.toISOString().slice(0,10);
+}
 function getChecks(k){ return JSON.parse(localStorage.getItem('b2_checks_'+k)||'{}'); }
 function saveChecks(k,v){ localStorage.setItem('b2_checks_'+k,JSON.stringify(v)); }
 function getMeasures(){ return JSON.parse(localStorage.getItem('b2_measures')||'[]'); }
